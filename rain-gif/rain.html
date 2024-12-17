@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chuva Diagonal</title>
+    <style>
+      body {
+        margin: 0;
+        background: #000; /* Fundo preto */
+        overflow: hidden;
+        position: relative;
+        height: 100vh;
+      }
+
+      /* Estilo das gotas (linhas de chuva) */
+      .raindrop {
+        position: absolute;
+        width: 2px; /* Espessura das gotas */
+        height: 80px; /* Comprimento das gotas */
+        background: white; /* Cor das gotas */
+        opacity: 0.7; /* Transparência para dar leveza */
+        transform: rotate(-20deg); /* Inclinação para simular a diagonal */
+        animation: fall linear infinite; /* Animação de queda */
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translate(0, -100px) rotate(-20deg); /* Começa fora da tela (acima) */
+        }
+        100% {
+          transform: translate(20vw, 90vh) rotate(-20deg); /* Move para fora da tela (diagonal) */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Número de gotas de chuva
+      const raindropCount = 150;
+
+      // Dimensões da janela
+      const bodyWidth = document.body.clientWidth;
+      const bodyHeight = document.body.clientHeight;
+
+      for (let i = 0; i < raindropCount; i++) {
+        const raindrop = document.createElement("div");
+        raindrop.className = "raindrop";
+
+        // Posição horizontal aleatória
+        const randomLeft = Math.floor(Math.random() * (bodyWidth + 200)) - 300;
+
+        const randomDuration = Math.random() * (1 - 0.5) + 0.5;
+
+        let opacity = Math.random() * (1 - 0.1) + 0.1;
+
+        if (opacity > 0.5) {
+          opacity = 0.7;
+        } else opacity = 0.2;
+
+        // Aplicar os estilos dinamicamente
+        raindrop.style.left = `${randomLeft}px`;
+        raindrop.style.bottom = `${bodyHeight}px`;
+        raindrop.style.opacity = `${opacity}`;
+        raindrop.style.animationDuration = `${randomDuration}s`;
+
+        // Adicionar a gota de chuva ao body
+        document.body.appendChild(raindrop);
+      }
+    </script>
+  </body>
+</html>

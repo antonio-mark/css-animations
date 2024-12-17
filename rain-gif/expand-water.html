@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Círculos Concêntricos</title>
+    <style>
+      body {
+        margin: 0;
+        background: #000; /* Fundo preto */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .circle {
+        position: relative;
+        width: 24px; /* Diâmetro do círculo menor */
+        height: 14px;
+        border: 0.5px solid #111;
+        box-shadow: 0 0 0 0.5px #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeOut 0.3s linear 0.2s forwards;
+      }
+
+      /* Círculo interno 1 */
+      .inner-circle {
+        position: relative;
+        width: 16px; /* Diâmetro do círculo menor */
+        height: 8px;
+        border: 0.5px solid #111;
+        box-shadow: 0 0 0 0.5px #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeOut 0.3s linear 0.4s forwards;
+      }
+
+      /* Círculo interno 2 */
+      .inner-inner-circle {
+        position: relative;
+        width: 8px; /* Diâmetro do círculo menor */
+        height: 4px;
+        border: 0.5px solid #111;
+        box-shadow: 0 0 0 0.5px #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeOut 0.3s linear 0.6s forwards;
+      }
+
+      /* Círculo interno 3 */
+      .smallest-circle {
+        position: relative;
+        width: 2px; /* Diâmetro do círculo menor */
+        height: 1px;
+        border: 0.5px solid #111;
+        box-shadow: 0 0 0 0.5px #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeOut 0.3s linear 0.8s forwards;
+      }
+
+      @keyframes fadeOut {
+        0% {
+          visibility: visible;
+        }
+        100% {
+          visibility: hidden;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="circle">
+      <div class="inner-circle">
+        <div class="inner-inner-circle">
+          <div class="smallest-circle"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
