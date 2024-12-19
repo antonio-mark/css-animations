@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 90vh;
+        margin: 0 20px;
+      }
+      div {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .center {
+        text-align: center;
+      }
+      marquee {
+        color: white;
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe src="./silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+    <audio id="player" preload="auto" autoplay loop>
+      <source src="./blesscastle.mp3" type="audio/mp3" />
+    </audio>
+    <div>
+      <marquee class="center" direction="up">𝔞𝔰 𝔦 𝔰𝔞𝔦𝔡, 𝔡𝔬𝔫𝔱 𝔣𝔲𝔠𝔨 𝔴𝔦𝔱𝔥 𝔲𝔰</marquee>
+    </div>
+    <div>
+      <marquee direction="right" truespeed scrolldelay="20">HACKED BY ???</marquee>
+    </div>
+    <div>
+      <marquee behavior="alternate">𝔡𝔬 𝔫𝔬𝔱 𝔠𝔥𝔞𝔩𝔩𝔢𝔫𝔤𝔢 𝔲𝔰, 𝔴𝔢 𝔢𝔵𝔱𝔢𝔫𝔡 𝔟𝔢𝔶𝔬𝔫𝔡 𝔶𝔬𝔲𝔯 𝔲𝔫𝔡𝔢𝔯𝔰𝔱𝔞𝔫𝔡𝔦𝔫𝔤</marquee>
+    </div>
+  </body>
+</html>
