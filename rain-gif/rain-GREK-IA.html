@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animação de Chuva</title>
+    <style>
+      body {
+        background: #222;
+        overflow: hidden;
+        margin: 0;
+      }
+      .rain {
+        position: absolute;
+        width: var(--width);
+        height: var(--height);
+        top: calc(-1 * var(--height));
+        left: var(--left);
+        background: linear-gradient(to bottom, transparent, white);
+        opacity: var(--opacity);
+        transform: rotate(-20deg);
+        animation: fall var(--duration) linear infinite;
+      }
+      @keyframes fall {
+        to {
+          top: 100vh;
+          transform: translateX(200px) rotate(-20deg);
+        }
+      }
+      .splat {
+        position: absolute;
+        width: 10px;
+        height: 5px;
+        background: white;
+        border-radius: 50%;
+        animation: splat 0.5s ease-out;
+      }
+      @keyframes splat {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const numDrops = 100;
+      const windowHeight = window.innerHeight;
+      const windowWidth = window.innerWidth;
+
+      function createDrop() {
+        const drop = document.createElement("div");
+        drop.className = "rain";
+        const height = 20 + Math.random() * 40; // 20 a 60px
+        const width = 2; // Largura fixa
+        const left = Math.random() * windowWidth;
+        const opacity = 0.2 + (0.8 * (height - 20)) / 40; // 0.2 a 1
+        const duration = 3 - (2 * (height - 20)) / 40; // 3s a 1s
+        drop.style.setProperty("--height", `${height}px`);
+        drop.style.setProperty("--width", `${width}px`);
+        drop.style.setProperty("--left", `${left}px`);
+        drop.style.setProperty("--opacity", opacity);
+        drop.style.setProperty("--duration", `${duration}s`);
+        document.body.appendChild(drop);
+
+        drop.addEventListener("animationiteration", () => {
+          const splat = document.createElement("div");
+          splat.className = "splat";
+          const rect = drop.getBoundingClientRect();
+          splat.style.left = `${rect.left + rect.width / 2}px`;
+          splat.style.top = `${windowHeight - 2.5}px`;
+          document.body.appendChild(splat);
+          splat.addEventListener("animationend", () => splat.remove());
+        });
+      }
+
+      for (let i = 0; i < numDrops; i++) {
+        setTimeout(createDrop, Math.random() * 2000); // Início escalonado
+      }
+    </script>
+  </body>
+</html>
